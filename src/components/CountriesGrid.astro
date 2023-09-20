@@ -1,0 +1,32 @@
+---
+import { addThousandSeparators } from '../utils/add-thousand-separators'
+import { getCountries } from '../utils/countries-api'
+const countries = await getCountries('region', 'europe')
+---
+
+<div
+  class='mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-16'
+>
+  {
+    countries.map((country) => (
+      <div class='max-w-sm rounded shadow-md bg-white'>
+        <div class='w-full h-[150px] bg-cover bg-center' style={`background-image: url(${country.flags.svg})`} >
+        </div>
+        <div class='px-6 pt-4 pb-2'>
+          <h3 class='font-bold text-xl text-stone-700 mb-2'>{country.name.common}</h3>
+        </div>
+        <div class='px-6 pb-2'>
+          <p class='font-bold text-stone-600 text-sm pb-2'>
+            Population: <span class='font-normal'>{addThousandSeparators(country.population)}</span>
+          </p>
+          <p class='font-bold text-stone-600 text-sm pb-2'>
+            Region: <span class='font-normal'>{country.subregion}</span>
+          </p>
+          <p class='font-bold text-stone-600 text-sm pb-2'> 
+            Capital: <span class='font-normal'>{country.capital[0]}</span>
+          </p>
+        </div>
+      </div>
+    ))
+  }
+</div>

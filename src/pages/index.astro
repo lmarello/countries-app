@@ -1,9 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import SearchBar from '../components/SearchBar.astro'
+import CountriesGrid from '../components/CountriesGrid.astro'
 ---
 
 <Layout title='Where in the world?'>
-  <main>
-    <h1 class='text-4xl'>Hello Astro 🚀</h1>
+  <main class='mt-24 px-20'>
+    <div class='container'>
+      <SearchBar />
+      <CountriesGrid />
+    </div>
   </main>
 </Layout>
